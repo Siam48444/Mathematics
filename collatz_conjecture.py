@@ -16,13 +16,13 @@ ax.grid(True, color="lightgray", linestyle="--", linewidth=0.7)
 
 
 def main():
-    plot_sequence([703])
+    # plot_sequence([703])
     # print(max_in_range(1, 1000))
 
 
 
 def collatz_sequence(n: int) -> list[int]:
-    if n <= 0 or not isinstance(n, int):
+    if not isinstance(n, int) or n <= 0:
         print(f"Invalid number. Must be positive integer.")
         return []
 
@@ -33,8 +33,22 @@ def collatz_sequence(n: int) -> list[int]:
     return result
 
 
+
+def collatz_stopping_time(n: int) -> int:
+    if not isinstance(n, int) or n <= 0:
+        print(f"Invalid number. Must be positive integer.")
+        return
+
+    stops = 0
+    while n != 1:
+        n = n // 2 if n % 2 == 0 else 3*n + 1
+        stops += 1
+    return stops
+
+
+
 def max_in_range(start: int, end: int) -> tuple[int, int]:
-    if start <= 0 or end <= 0 or not isinstance(start, int) or not isinstance(end, int):
+    if not isinstance(start, int) or not isinstance(end, int) or start <= 0 or end <= 0:
         print(f"Invalid number. Must be positive integer.")
         return
 
