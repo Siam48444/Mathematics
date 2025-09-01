@@ -9,10 +9,14 @@ title_fontsize = 20
 label_fontsize = 14
 ticks_fontsize = 12
 
+fig, ax = plt.subplots()
+ax.tick_params(axis="both", labelsize=ticks_fontsize)
+ax.grid(True, color="lightgray", linestyle="--", linewidth=0.7)
+
 
 
 def main():
-    plot_sequence([17])
+    # plot_sequence([i for i in range(1, 10000+1)])
 
 
 
@@ -35,7 +39,6 @@ def plot_sequence(numbers: list[int]) -> None:
         return
 
     line_color = "red" if len(numbers) == 1 else None
-    fig, ax = plt.subplots()
 
     for num in numbers:
         y = collatz_sequence(num)
@@ -51,9 +54,6 @@ def plot_sequence(numbers: list[int]) -> None:
         ax.set_xlabel(f"Iterations", fontsize=label_fontsize)
         ax.set_ylabel(f"Values", fontsize=label_fontsize)
 
-    ax.tick_params(axis="both", labelsize=ticks_fontsize)
-    ax.grid(True, color="lightgray", linestyle="--", linewidth=0.7)
-    fig.tight_layout()
     plt.show()
 
 
