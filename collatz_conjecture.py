@@ -6,13 +6,13 @@ plt.rcParams['font.family'] = 'KaTeX_Main'
 plt.rcParams['mathtext.fontset'] = 'cm'
 
 title_fontsize = 20
-label_fontsize = 12
+label_fontsize = 14
 ticks_fontsize = 11
 
 
 
 def main():
-    plot_sequence([27])
+    plot_sequence([i for i in range(1, 51)])
 
 
 
@@ -40,11 +40,16 @@ def plot_sequence(numbers: list[int]) -> None:
         plt.plot(x, y, marker="", linestyle="-")
 
     if len(numbers) == 1:
-        plt.title(f"Collatz sequence starting at {numbers[0]}", fontsize=title_fontsize)
+        plt.title(f"Collatz Sequence starting at {numbers[0]}", fontsize=title_fontsize)
+        plt.xlabel(f"Number of steps = {len(y)-1}", fontsize=label_fontsize)
+        plt.ylabel(f"Values", fontsize=label_fontsize)
     else:
-        plt.title(f"Collatz sequence", fontsize=title_fontsize)
+        plt.title(f"Collatz Sequence", fontsize=title_fontsize)
+        plt.xlabel(f"Number of steps", fontsize=label_fontsize)
+        plt.ylabel(f"Values", fontsize=label_fontsize)
 
-    plt.grid(True)
+    plt.tick_params(axis="both", labelsize=ticks_fontsize)
+    plt.grid(False)
     plt.show()
 
 
