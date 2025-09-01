@@ -7,18 +7,18 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 
 title_fontsize = 20
 label_fontsize = 14
-ticks_fontsize = 11
+ticks_fontsize = 12
 
 
 
 def main():
-    plot_sequence([i for i in range(1, 51)])
+    plot_sequence([27])
 
 
 
 def collatz_sequence(n: int) -> list[int]:
     if n <=0 or not isinstance(n, int):
-        print(f"Invalid number: n = {n}\n**Number must be positive integer.**")
+        print(f"Invalid number. Must be positive integer.")
         return []
 
     result = [n]
@@ -30,8 +30,8 @@ def collatz_sequence(n: int) -> list[int]:
 
 
 def plot_sequence(numbers: list[int]) -> None:
-    if not numbers:
-        print("No number provided!")
+    if any(n <= 0 or not isinstance(n, int) for n in numbers):
+        print("Invalid input list. Must contain positive integers.")
         return
 
     for num in numbers:
