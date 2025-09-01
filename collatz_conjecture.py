@@ -16,7 +16,15 @@ ax.grid(True, color="lightgray", linestyle="--", linewidth=0.7)
 
 
 def main():
-    # plot_sequence([i for i in range(1, 10000+1)])
+    plot_sequence([9663])
+    # max_val = 0
+    # num = 2
+    # for i in range(1, 10000+1):
+    #     seq = collatz_sequence(i)
+    #     if max(seq) > max_val:
+    #         max_val = max(seq)
+    #         num = i
+    # print(num, max_val)
 
 
 
