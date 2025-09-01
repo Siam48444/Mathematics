@@ -34,22 +34,26 @@ def plot_sequence(numbers: list[int]) -> None:
         print("Invalid input list. Must contain positive integers.")
         return
 
+    line_color = "red" if len(numbers) == 1 else None
+    fig, ax = plt.subplots()
+
     for num in numbers:
         y = collatz_sequence(num)
         x = [i for i in range(len(y))]
-        plt.plot(x, y, marker="", linestyle="-")
+        ax.plot(x, y, marker="", linestyle="-", color=line_color)
 
     if len(numbers) == 1:
-        plt.title(f"Collatz Sequence starting at {numbers[0]}", fontsize=title_fontsize)
-        plt.xlabel(f"Number of steps = {len(y)-1}", fontsize=label_fontsize)
-        plt.ylabel(f"Values", fontsize=label_fontsize)
+        ax.set_title(f"Collatz Sequence starting at {numbers[0]}", fontsize=title_fontsize)
+        ax.set_xlabel(f"Iterations = {len(y)-1}", fontsize=label_fontsize)
+        ax.set_ylabel(f"Values  (max = {max(y)})", fontsize=label_fontsize)
     else:
-        plt.title(f"Collatz Sequence", fontsize=title_fontsize)
-        plt.xlabel(f"Number of steps", fontsize=label_fontsize)
-        plt.ylabel(f"Values", fontsize=label_fontsize)
+        ax.set_title(f"Collatz Sequence", fontsize=title_fontsize)
+        ax.set_xlabel(f"Iterations", fontsize=label_fontsize)
+        ax.set_ylabel(f"Values", fontsize=label_fontsize)
 
-    plt.tick_params(axis="both", labelsize=ticks_fontsize)
-    plt.grid(False)
+    ax.tick_params(axis="both", labelsize=ticks_fontsize)
+    ax.grid(True, color="lightgray", linestyle="--", linewidth=0.7)
+    fig.tight_layout()
     plt.show()
 
 
