@@ -12,7 +12,7 @@ ticks_fontsize = 12
 
 
 def main():
-    plot_sequence([27])
+    plot_sequence([17])
 
 
 
