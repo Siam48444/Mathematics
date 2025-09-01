@@ -1,14 +1,18 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Custom fonts
+# Fonts
 plt.rcParams['font.family'] = 'KaTeX_Main'
 plt.rcParams['mathtext.fontset'] = 'cm'
+
+title_fontsize = 20
+label_fontsize = 12
+ticks_fontsize = 11
 
 
 
 def main():
-    print(collatz_sequence(10))
+    plot_sequence([27])
 
 
 
@@ -22,6 +26,27 @@ def collatz_sequence(n: int) -> list[int]:
         n = n // 2 if n % 2 == 0 else 3*n + 1
         result.append(n)
     return result
+
+
+
+def plot_sequence(numbers: list[int]) -> None:
+    if not numbers:
+        print("No number provided!")
+        return
+
+    for num in numbers:
+        y = collatz_sequence(num)
+        x = [i for i in range(len(y))]
+        plt.plot(x, y, marker="", linestyle="-")
+
+    if len(numbers) == 1:
+        plt.title(f"Collatz sequence starting at {numbers[0]}", fontsize=title_fontsize)
+    else:
+        plt.title(f"Collatz sequence", fontsize=title_fontsize)
+
+    plt.grid(True)
+    plt.show()
+
 
 
 
