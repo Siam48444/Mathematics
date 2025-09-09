@@ -11,13 +11,10 @@ ticks_fontsize = 12
 
 
 
-total_stopping_cache = {1: 0}
-
-
 
 def main():
-    plot_total_stopping_time([i for i in range(1, 10000+1)])
-    # print(collatz_total_stopping_time(27))
+    # plot_total_stopping_time([i for i in range(1, 1000+1)])
+    print(collatz_total_stopping_time(27))
 
 
 
@@ -38,19 +35,21 @@ def collatz_total_stopping_time(n: int) -> int:
     if not isinstance(n, int) or n <= 0:
         print(f"Invalid number. Must be positive integer.")
         return
+        
+    cache = {1: 0}
 
-    if n in total_stopping_cache:
-        return total_stopping_cache[n]
-
+    if n in cache:
+        return cache[n]
+    
     original = n
     count = 0
 
-    while n not in total_stopping_cache:
+    while n not in cache:
         n = n // 2 if n % 2 == 0 else 3 * n + 1
         count += 1
 
-    result = count + total_stopping_cache[n]
-    total_stopping_cache[original] = result
+    result = count + cache[n]
+    cache[original] = result
     return result
     
     
