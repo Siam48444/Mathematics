@@ -1,13 +1,26 @@
+import math
+
+
+
 def main() -> None:
-    lim = 5000
+    primitive_triples(5)
+
+
+
+def pythagorean_triples(lim: int) -> None:
+    """Prints all Pythagorean triples up to limit."""
     for i in range(1, lim):
         for j in range(i+1, lim+1):
-            print(pythagorean_triples(i, j))
+            print(abs(i**2 - j**2), 2*i*j, i**2 + j**2)
 
 
 
-def pythagorean_triples(a: int, b: int) -> tuple[int, int, int]:
-    return (abs(a**2 - b**2), 2*a*b, a**2 + b**2)
+def primitive_triples(lim: int) -> None:
+    """Prints only primitive Pythagorean triples up to limit."""
+    for i in range(1, lim):
+        for j in range(i+1, lim+1):
+            if math.gcd(i, j) == 1 and (i % 2 == 0 or j % 2 == 0):
+                print(abs(i**2 - j**2), 2*i*j, i**2 + j**2)
 
 
 
