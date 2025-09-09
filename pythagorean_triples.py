@@ -7,6 +7,8 @@ def main() -> None:
 
 
 
+# In both functions, argument 'lim' is the maximum value for 'a' and 'b' to generate triples.
+
 def pythagorean_triples(lim: int) -> None:
     """Prints all Pythagorean triples up to limit."""
     for i in range(1, lim):
