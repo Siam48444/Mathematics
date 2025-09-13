@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def main() -> None:
-    # print(multiplicative_persistence(9999999))
-    plot_multiplicative_persistence([10])
+    plot_multiplicative_persistence([i for i in range(1, 10000)])
 
 
 
@@ -31,10 +30,11 @@ def multiplicative_persistence(n):
 def plot_multiplicative_persistence(numbers: list[int]) -> None:
     """Plots the persistences for given numbers."""
 
-    x = [i for i in range(0, max(numbers)+1)]
-    y = [multiplicative_persistence(j) for j in x]
-    print(x)
-    print(y)
+    y = [multiplicative_persistence(i) for i in numbers]
+
+    plt.bar(numbers, y, color="black", zorder=7)
+    plt.grid(False, color="lightgray", linestyle="--", linewidth=0.7, zorder=0)
+    plt.show()
 
 
 
