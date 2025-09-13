@@ -32,8 +32,11 @@ def plot_multiplicative_persistence(numbers: list[int]) -> None:
 
     y = [multiplicative_persistence(i) for i in numbers]
 
-    plt.bar(numbers, y, color="black", zorder=7)
-    plt.grid(False, color="lightgray", linestyle="--", linewidth=0.7, zorder=0)
+    plt.scatter(numbers, y, s=23, color="blue", zorder=7)
+    plt.title("Multiplicative Persistence Distribution", fontsize=18)
+    plt.xlabel("Number")
+    plt.ylabel("Persistence")
+    plt.grid(False, color="lightgray", linestyle="-", linewidth=0.7, zorder=0)
     plt.show()
 
 
